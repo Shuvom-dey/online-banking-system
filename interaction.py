@@ -24,12 +24,30 @@ def menu():
 def create_account():
     
     #INPUTING ALL THE VALUES IN THE VARIABLES >>
-    
+        
     name=str(input("ENTER YOUR NAME HERE >>"))
-    age=int(input("ENTER YOUR AGE HERE >>"))
-    phn_no=int(input("ENTER YOUR PHONE NUMEBER HERE >>"))
     address=str(input("ENTER YOUR ADDRESS HERE >>"))
-    pin=int(input("ENTER A NEW MPIN HERE >>"))
+    while True :
+            phn_no=input("ENTER YOUR REGISTERED PHONE NUMBER HERE >>")
+            if not phn_num.isdigit():
+                print("PLEASE ENTER A VALID NUMBER >>")
+                continue
+            phn_num=int(phn_num)
+            
+            pin=input("ENTER YOUR MPIN HERE >>")
+            if not pin.isdigit():
+                print("PLEASE ENTER A VALID MPIN >>")
+                continue
+            pin=int(pin)
+                
+            age=input("ENTER YOUR AGE HERE >>")
+            if not age.isdigit():
+                print("PLEASE ENTER A VALID number >>")
+                continue
+            age=int(age)
+            break
+            
+        
     
     #ORGANIZING ALL THE VARIABLE VALUES IN A DICTIONARY 
     #FOR EASYNESS OF RETURNING AND USING ANY PERTICULAR VALUE OUTSIDE THE FUNCTION
@@ -62,7 +80,18 @@ def login():
     #AND COMPARE IT WITH THE CREATE_ACCOUNT'S PHN_NUM & MPIN 
     #IF IT MATCHES THEN IT CAN DISPLAY THE REST OF THE DETAILS FROM THE CREATE_ACCOUNT FUNCTION
     
-    phn_num=int(input("ENTER YOUR REGISTERED PHONE NUMBER HERE >>"))
-    mpin=int(input("ENTER YOUR MPIN HERE >>"))
+    while True :
+        phn_num=input("ENTER YOUR REGISTERED PHONE NUMBER HERE >>")
+        if not phn_num.isdigit():
+            print("PLEASE ENTER A VALID NUMBER >>")
+            continue
+        phn_num="+91"+phn_num
+        
+        mpin=input("ENTER YOUR MPIN HERE >>")
+        if not mpin.isdigit():
+            print("PLEASE ENTER A VALID MPIN >>")
+            continue
+        mpin=int(mpin)
+        
      
-    return phn_num , mpin
+        return [phn_num , mpin]

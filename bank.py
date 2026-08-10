@@ -15,36 +15,38 @@ def bank_menu():
     while True :
         
         option=input("HERE INPUT YOUR CHOICE OF OPTION >>")
-        if not option.isdigit:
+        if not option.isdigit():
             print("YOU HAVE GIVEN WRONG INPUT , PLEASE TRY AGAIN !!")
             continue
-        elif option not in [1,2,3,4]:
+        option=int(option)
+        if option not in [1,2,3,4]:
            print("YOU HAVEN'T CHOOSEN A OPTION FROM THE MENU PLEASE CHOOSE ONE !!")
         else:
             return option
 
-bank_bal=0
 
-def deposit():
+
+def deposit(bank_bal):
     
     while True :
         amount=input("ENTER THE AMOUNT OF MONEY YOU WANNA DEPOSIT >>")
         if not amount.isdigit():
             print("PLEASE ENTER A VALID AMOUNT !!")
             continue 
-        else :
-            bank_bal+=amount
-            return bank_bal
+        amount=int(amount)
+        bank_bal+=amount
+        return bank_bal
         
         
-def withdraw():
+def withdraw(bank_bal):
     
     while True :
             amount=input("ENTER THE AMOUNT OF MONEY YOU WANNA WITHDRAW >>")
             if not amount.isdigit():
                 print("PLEASE ENTER A VALID AMOUNT !!")
                 continue 
-            elif amount>bank_bal:
+            amount=int(amount)
+            if amount>bank_bal:
                 print("YOU DON'T HAVE ENOUGH MONEY IN YOUR ACCOUNT !!😥")
                 continue
             else :
@@ -52,7 +54,7 @@ def withdraw():
                 return bank_bal
 
 
-def show_bal():
-    
-    print(f"YOU HAVE {bank_bal} $ IN YOUR ACCOUNT 💰👛")
+def show_bal(bank_bal):
+    return bank_bal
+
     
