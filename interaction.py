@@ -1,7 +1,8 @@
 def menu():
     print("1. CREATE ACOOUNT .",
           "\n2. LOG-IN .",
-          "\n3. KNOW ABOUT OUR BANK ."
+          "\n3. KNOW ABOUT OUR BANK .",
+          "\n4. EXIT ."
           "\nCHOOSE AN OPTION .")
     
     #THIS IS JUST THE MENU PART SHOWING SOME OPTIONS 
@@ -14,7 +15,7 @@ def menu():
             print("PLEASE ENTER A VALID DIGIT 🔢")
             continue 
         option=int(option)
-        if option not in [1,2,3]:
+        if option not in [1,2,3,4]:
             print("YOU HAVE CHOOSEN A WRONG OPTION PLEASE CHOOSE ANOTHER !!")
         else:
             return option
@@ -28,7 +29,7 @@ def create_account():
     name=str(input("ENTER YOUR NAME HERE >>"))
     address=str(input("ENTER YOUR ADDRESS HERE >>"))
     while True :
-            phn_no=input("ENTER YOUR REGISTERED PHONE NUMBER HERE >>")
+            phn_num=input("ENTER YOUR REGISTERED PHONE NUMBER HERE >>")
             if not phn_num.isdigit():
                 print("PLEASE ENTER A VALID NUMBER >>")
                 continue
@@ -54,9 +55,10 @@ def create_account():
     
     account={"name":name,
              "age":age,
-             "phn_num":"+91"+str(phn_no),
+             "phn_num":"+91"+str(phn_num),
              "address":address,
-             "mapin":pin}
+             "mapin":pin,
+             "bank_bal":0}
     
     #OR THIS A WAY TO DO THE SAME THING BUT A BIT MORE WORK 
     # name,age,phn_no,address,acc_no=create_account()
