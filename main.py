@@ -7,13 +7,13 @@ import bank
 
     
 option=interaction.menu()
-entry=True
-while entry:
+entry1=True
+while entry1:
     with open ("data.json","r") as file:
         customers= json.load(file)
     
     customer_idss=0
-    open_account=None #check at last whether it's really needed or not ....
+    open_account=None
     bank_bal=0
     if option ==1:
         print("\nOKEY , YOU HAVE CHOOSEN TO CREATE AN ACCOUNT AT OUR BANK . WELLCOME ABROAD 😊")
@@ -36,13 +36,15 @@ while entry:
                 continue
             else :
                 print("OK YOU CHOOSE TO EXIT , HAVE A GOOD DAY 🙏")
+                
                 open_account["bank_bal"]=bank_bal
                 open_account["acc_num"]=acc_num
+                
                 customers.append(open_account)
                 with open("data.json","w") as file:
                     json.dump(customers,file)
                 break
-        entry=False
+        entry1=False
         
 #SO HERE I USED THE OPEN ACCOUNT VARIABLE TO STORE THE ACC_NUM OF PEOPLES IN A SINGLE DICTIONARY
 #AND APPENDED IT ON THE VARIABLE WE CREATED FOR THE JSON FILE UNDER THE FIRST COMMENT 
@@ -56,6 +58,8 @@ while entry:
         
     elif option ==2:
         
+#I AGAIN INVOKED THE JSON FILE FOR THE LOGIN PART 
+        
         with open ("data.json","r") as file:
             customers= json.load(file)
             
@@ -68,6 +72,9 @@ while entry:
             
             for customer in customers:
                 
+#HERE WHAT I DID IS SEARCHED THROUGH EVERY DICTIONARY OF DATA OF PERSON THAT HAS AN ACCOUNT HERE 
+#AND LOOKED FOR THE PARTICULAR DATA TO MATCH FOR FURTHER BANKING TRANSACTION           
+  
                     if customer["phn_num"]==login[0] and customer["mapin"]==login[1]:
                         
                         print(f"HEY IT'S GOOD TO SEE YOU > {customer['name']} <🙏 WHAT DO YOU WANNA DO NEXT .")
@@ -89,6 +96,8 @@ while entry:
                                     print("OK YOU CHOOSE TO EXIT , HAVE A GOOD DAY 🙏")
                                 break
                             
+#AND HERE WHEN THE DEED IS DONE I UPDATED THE PERSON'S BANK BALANCE DATA WITH THE NEW TRANSACTIONS    
+                         
                         customer["bank_bal"]=bank_bal
                         with open("data.json","w") as file:
                             json.dump(customers,file)
@@ -102,7 +111,7 @@ while entry:
                 print("IT SEEMS LIKE THERE ISN'T ANY ACCOUNT OPENED HERE WITH THAT CREDENTIAL .. PLEASE TRY AGAIN ")
                     
                         
-        entry=False
+        entry1=False
     elif option==3:
         print('''🏦 WELCOME TO TRUSTWAVE DIGITAL BANK 🏦
 
@@ -143,7 +152,7 @@ while entry:
                 🙏 Thank you for banking with us.
 
                 "Your Trust, Our Responsibility." ''')
-        entry=False
+        entry1=False
     else:
         print("SO YOU WANNA EXIT , GOODBYE THEN 🙏")
-        entry=False
+        entry1=False
