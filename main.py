@@ -1,9 +1,18 @@
 import interaction
 import json
 import bank
+import mysql.connector
 
 #OKEY SO STORING ALL THIS VARIABLE DATA IN VARIABLES OR ARRAY IS PRETTY TROUBLESOME 
 #THAT'S WHY I USED JSON BEACUSE IT'S PRETTY MUCH EASY TO USE 
+
+db=mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="Shuvomdey@10",
+    database="mydb"
+)
+my_cursor=db.cursor()
 
     
 option=interaction.menu()
@@ -40,6 +49,17 @@ while entry1:
                 open_account["bank_bal"]=bank_bal
                 open_account["acc_num"]=acc_num
                 
+                my_cursor.execute("""INSERT INTO bank_account (name,age,phn_num,address,mapin,bank_bal,acc_num)
+                                  VALUES(%s,%s,%s,%s,%s,%s,%s)""",
+                                  (open_account["name"],
+                                   open_account["age"],
+                                   open_account["phn_num"],
+                                   open_account["address"],
+                                   open_account["mapin"],
+                                   open_account["bank_bal"],
+                                   open_account["acc_num"])
+                                  )
+                db.commit()
                 customers.append(open_account)
                 with open("data.json","w") as file:
                     json.dump(customers,file)
